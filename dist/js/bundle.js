@@ -107,29 +107,45 @@ function calc() {
 
     totalValue.innerHTML = 0;
 
-    persons.addEventListener("input", function () {
-        personsSum = +this.value;
-        total = (daysSum + personsSum) * 4000;
 
-        if (restDays.value == "" || persons.value == "" ||
-            persons.value % 1 !== 0 || restDays.value % 1 !== 0) {
-            totalValue.innerHTML = 0;
+
+    persons.addEventListener("input", function () {
+        let arr = persons.value.split("");
+        console.log(arr);
+
+        if (arr[0] == 0) {
+            persons.value = "";
         } else {
-            let a = total;
-            totalValue.innerHTML = a * place.options[place.selectedIndex].value;
+            personsSum = +this.value;
+            total = (daysSum + personsSum) * 4000;
+
+            if (restDays.value == "" || persons.value == "" ||
+                persons.value % 1 !== 0 || restDays.value % 1 !== 0) {
+                totalValue.innerHTML = 0;
+            } else {
+                let a = total;
+                totalValue.innerHTML = a * place.options[place.selectedIndex].value;
+            }
         }
     });
 
     restDays.addEventListener("input", function () {
-        daysSum = +this.value;
-        total = (daysSum + personsSum) * 4000;
+        let arr = restDays.value.split("");
+        console.log(arr);
 
-        if (restDays.value == "" || persons.value == "" ||
-            persons.value % 1 !== 0 || restDays.value % 1 !== 0) {
-            totalValue.innerHTML = 0;
+        if (arr[0] == 0) {
+            restDays.value = "";
         } else {
-            let a = total;
-            totalValue.innerHTML = a * place.options[place.selectedIndex].value;
+            daysSum = +this.value;
+            total = (daysSum + personsSum) * 4000;
+
+            if (restDays.value == "" || persons.value == "" ||
+                persons.value % 1 !== 0 || restDays.value % 1 !== 0) {
+                totalValue.innerHTML = 0;
+            } else {
+                let a = total;
+                totalValue.innerHTML = a * place.options[place.selectedIndex].value;
+            }
         }
     });
 
@@ -154,7 +170,10 @@ function calc() {
             event.preventDefault();
         }
     });
+
+
 }
+
 
 
 
