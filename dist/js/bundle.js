@@ -115,7 +115,8 @@ function calc() {
             persons.value % 1 !== 0 || restDays.value % 1 !== 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+            let a = total;
+            totalValue.innerHTML = a * place.options[place.selectedIndex].value;
         }
     });
 
@@ -127,7 +128,18 @@ function calc() {
             persons.value % 1 !== 0 || restDays.value % 1 !== 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+            let a = total;
+            totalValue.innerHTML = a * place.options[place.selectedIndex].value;
+        }
+    });
+
+
+    place.addEventListener("change", function () {
+        if (restDays.value == "" || persons.value == "") {
+            totalValue.innerHTML = 0;
+        } else {
+            let a = total;
+            totalValue.innerHTML = a * this.options[this.selectedIndex].value;
         }
     });
 
@@ -140,15 +152,6 @@ function calc() {
     restDays.addEventListener("keypress", event => {
         if (!/[\d]/.test(event.key)) {
             event.preventDefault();
-        }
-    });
-
-    place.addEventListener("change", function () {
-        if (restDays.value == "" || persons.value == "") {
-            totalValue.innerHTML = 0;
-        } else {
-            let a = total;
-            totalValue.innerHTML = a * this.options[this.selectedIndex].value;
         }
     });
 }
